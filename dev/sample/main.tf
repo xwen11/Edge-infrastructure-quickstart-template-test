@@ -1,43 +1,62 @@
+# variable "subscriptionId" {
+#   description = "The subscription id to register this environment."
+#   type        = string
+#   default     = "921d26b3-c14d-4efc-b56e-93a2439e028c"
+# }
+
+# locals {
+#   siteId = "<yourSiteID>"
+# }
+
 # module "base" {
-#   source          = "../../modules/base"
-#   location        = "<location>"
-#   siteId          = "<siteId>"
-#   domainFqdn      = "<domainFqdn>"
-#   startingAddress = "<startingAddress>"
-#   endingAddress   = "<endingAddress>"
-#   defaultGateway  = "<defaultGateway>"
-#   dnsServers      = ["<dnsServer1>"]
-#   adouPath        = "<adouPath>"
-#   tenant          = "<tenant>"
-#   domainServerIP  = "<domainServerIP>"
+#   source          = "../../modules/hci"
+#   location        = "eastus"
+#   siteId          = local.siteId
+#   domainFqdn      = "jumpstart.local"
+#   startingAddress = "192.168.1.15"
+#   endingAddress   = "192.168.1.115"
+#   defaultGateway  = "192.168.1.1"
+#   dnsServers      = ["192.168.1.254"]
+#   adouPath        = "OU=${local.siteId},DC=jumpstart,DC=local"
+#   domainServerIP  = "192.168.1.1"
 #   servers = [
 #     {
-#       name        = "<server1Name>",
-#       ipv4Address = "<server1Ipv4Address>"
+#       name        = "AzSHOST1",
+#       ipv4Address = "192.168.1.12"
 #     },
 #     {
-#       name        = "<server2Name>",
-#       ipv4Address = "<server2Ipv4Address>"
+#       name        = "AzSHOST2",
+#       ipv4Address = "192.168.1.13"
 #     }
 #   ]
-#   managementAdapters = ["<managementAdapter1>", "<managementAdapter2>"]
+#   managementAdapters = ["FABRIC", "FABRIC2"]
 #   storageNetworks = [
 #     {
 #       name               = "Storage1Network",
-#       networkAdapterName = "<storageAdapter1>",
-#       vlanId             = "<storageAdapter1Vlan>"
+#       networkAdapterName = "StorageA",
+#       vlanId             = "711"
 #     },
 #     {
 #       name               = "Storage2Network",
-#       networkAdapterName = "<storageAdapter2>",
-#       vlanId             = "<storageAdapter2Vlan>"
+#       networkAdapterName = "StorageB",
+#       vlanId             = "712"
 #     }
 #   ]
-#   subId                  = var.subscriptionId
-#   domainAdminUser        = var.domainAdminUser
-#   domainAdminPassword    = var.domainAdminPassword
-#   localAdminUser         = var.localAdminUser
-#   localAdminPassword     = var.localAdminPassword
-#   servicePrincipalId     = var.servicePrincipalId
-#   servicePrincipalSecret = var.servicePrincipalSecret
+#   subId = var.subscriptionId
+#   // Beginning of specific varible for virtual environment
+#   dcPort = 6985
+#   serverPorts = {
+#     "AzSHOST1" = 15985,
+#     "AzSHOST2" = 25985
+#   }
+#   virtualHostIp = "<yourVirutalIP>"
+#   // end of specific varible for virtual environment
+#   tenant                 = "<yourTenant>"
+#   domainAdminUser        = "<domainAdminUser>"
+#   domainAdminPassword    = "<domainAdminPassword>"
+#   localAdminUser         = "<localAdminUser>"
+#   localAdminPassword     = "<localAdminPassword>"
+#   servicePrincipalId     = "<servicePrincipalId>"
+#   servicePrincipalSecret = "<servicePrincipalSecret>"
+
 # }
