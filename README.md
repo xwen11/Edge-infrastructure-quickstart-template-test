@@ -100,6 +100,32 @@ After the first HCI deployment succeeds, you may want to scale the deployment to
 ## Telemetry
 Microsoft collects deployment pipeline telemetry. If you do not want to send telemetry, edit `.github/workflows/site-cd-workflow.yml`, remove all steps starts with `Telemetry`.
 
+
+## virtual environment
+prerequisite:
+1. the subscription should able to create vm of size Standard_E32s_v5
+2. the user to run terraform should able to access the image gallery
+
+To create the virtual environment: run terraform apply for virtual-env module.
+
+To create the HCI cluster for virtual environment, change following variables, note the localAdminUser and localAdminPassword is hardcoded in image, pls contact image owner for these info.
+
+```
+variable "subscriptionId" {
+  description = "The subscription id to register this environment."
+  type        = string
+  default     = "<yourSub>"
+}
+virtualHostIp = "<yourVirutalIP>"
+tenant                 = "<yourTenant>"
+domainAdminUser        = "<domainAdminUser>"
+domainAdminPassword    = "<domainAdminPassword>"
+localAdminUser         = "<localAdminUser>"
+localAdminPassword     = "<localAdminPassword>"
+servicePrincipalId     = "<servicePrincipalId>"
+servicePrincipalSecret = "<servicePrincipalSecret>"
+```
+
 ## Clean Up
 Removing one folder will not remove the resources created by this folder previously.
 

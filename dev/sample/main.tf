@@ -1,7 +1,7 @@
 # variable "subscriptionId" {
 #   description = "The subscription id to register this environment."
 #   type        = string
-#   default     = "921d26b3-c14d-4efc-b56e-93a2439e028c"
+#   default     = "<yourSub>"
 # }
 
 # locals {
