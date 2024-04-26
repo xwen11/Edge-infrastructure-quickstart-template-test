@@ -47,7 +47,6 @@ module "base" {
   servicePrincipalSecret        = var.servicePrincipalSecret
   rpServicePrincipalObjectId    = var.rpServicePrincipalObjectId
 
-
   # Region Hybrid AKS related parameters
   aksArc-controlPlaneIp = "<aksArc-controlPlaneIp>"
 
